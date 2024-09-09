@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -26,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FlightsClient interface {
-	GetFlightList(ctx context.Context, in *Void, opts ...grpc.CallOption) (*FlightList, error)
+	GetFlightList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FlightList, error)
 }
 
 type flightsClient struct {
@@ -37,7 +38,7 @@ func NewFlightsClient(cc grpc.ClientConnInterface) FlightsClient {
 	return &flightsClient{cc}
 }
 
-func (c *flightsClient) GetFlightList(ctx context.Context, in *Void, opts ...grpc.CallOption) (*FlightList, error) {
+func (c *flightsClient) GetFlightList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FlightList, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FlightList)
 	err := c.cc.Invoke(ctx, Flights_GetFlightList_FullMethodName, in, out, cOpts...)
@@ -51,7 +52,7 @@ func (c *flightsClient) GetFlightList(ctx context.Context, in *Void, opts ...grp
 // All implementations must embed UnimplementedFlightsServer
 // for forward compatibility.
 type FlightsServer interface {
-	GetFlightList(context.Context, *Void) (*FlightList, error)
+	GetFlightList(context.Context, *emptypb.Empty) (*FlightList, error)
 	mustEmbedUnimplementedFlightsServer()
 }
 
@@ -62,7 +63,7 @@ type FlightsServer interface {
 // pointer dereference when methods are called.
 type UnimplementedFlightsServer struct{}
 
-func (UnimplementedFlightsServer) GetFlightList(context.Context, *Void) (*FlightList, error) {
+func (UnimplementedFlightsServer) GetFlightList(context.Context, *emptypb.Empty) (*FlightList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFlightList not implemented")
 }
 func (UnimplementedFlightsServer) mustEmbedUnimplementedFlightsServer() {}
@@ -87,7 +88,7 @@ func RegisterFlightsServer(s grpc.ServiceRegistrar, srv FlightsServer) {
 }
 
 func _Flights_GetFlightList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Void)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -99,7 +100,7 @@ func _Flights_GetFlightList_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: Flights_GetFlightList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FlightsServer).GetFlightList(ctx, req.(*Void))
+		return srv.(FlightsServer).GetFlightList(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

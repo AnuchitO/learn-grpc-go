@@ -4,6 +4,8 @@ option go_package = "../flight"; // This is the package name that will be used i
 
 package flight;
 
+import "google/protobuf/empty.proto";
+
 message Flight {
     string airlineCode = 1;
     string number = 2;
@@ -13,8 +15,6 @@ message FlightList {
     repeated Flight flights = 1;
 }
 
-message Void {}
-
 service Flights {
-    rpc GetFlightList (Void) returns (FlightList) {}
+    rpc GetFlightList (google.protobuf.Empty) returns (FlightList) {}
 }
