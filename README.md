@@ -33,6 +33,7 @@ To use gRPC in Go, you need to:
 5. Start the gRPC server and make requests from the client.
 
 ## Pre-requisites
+- https://grpc.io/docs/protoc-installation/
 - Go
 - Protocol Buffers (protoc) compiler `go install google.golang.org/protobuf/cmd/protoc-gen-go@latest` this is use to generate Go code from .proto files
 - gRPC Go plugin `go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest` this is use to generate gRPC code in Go

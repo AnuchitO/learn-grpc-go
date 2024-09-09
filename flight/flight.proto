@@ -8,3 +8,13 @@ message Flight {
     string airlineCode = 1;
     string number = 2;
 }
+
+message FlightList {
+    repeated Flight flights = 1;
+}
+
+message Void {}
+
+service Flights {
+    rpc GetFlightList (Void) returns (FlightList) {}
+}

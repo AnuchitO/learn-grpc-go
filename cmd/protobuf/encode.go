@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-
 	msg := &flight.Flight{
 		AirlineCode: "AS",
 		Number:      "3567",
