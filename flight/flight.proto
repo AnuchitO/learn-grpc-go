@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option go_package = "../flight"; // This is the package name that will be used in the generated Go code
 
-package flight;
-
 import "google/protobuf/empty.proto";
+
+package flight;
 
 message Flight {
     string airlineCode = 1;
@@ -16,5 +16,6 @@ message FlightList {
 }
 
 service Flights {
-    rpc GetFlightList (google.protobuf.Empty) returns (FlightList) {}
+    rpc GetFlight (Flight) returns (Flight) {}
+    rpc GetFlightList (google.protobuf.Empty) returns (stream Flight) {}
 }
