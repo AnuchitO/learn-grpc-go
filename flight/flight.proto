@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "../flight"; // This is the package name that will be used in the generated Go code
+
+package flight;
+
+message Flight {
+    string airlineCode = 1;
+    string number = 2;
+}
