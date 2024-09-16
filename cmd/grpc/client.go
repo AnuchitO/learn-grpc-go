@@ -23,6 +23,8 @@ func main() {
 	}
 	defer conn.Close()
 
+	
+	// step 2: create flight client
 	client := flight.NewFlightsClient(conn)
 
 	f, err := client.GetFlight(context.Background(), &flight.Flight{})
